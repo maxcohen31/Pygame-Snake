@@ -2,19 +2,22 @@ import pygame
 from pygame import mixer
 import random
 
+# Making the class Apple
 class Apple:
     
     def __init__(self):
         
-        self.appleX = random.randint(0, grid_block2 - 1)
-        self.appleY = random.randint(0, grid_block2 - 1)
+        self.appleX = random.randint(0, grid_block2 - 1) # X_coor
+        self.appleY = random.randint(0, grid_block2 - 1) # Y_coor
         self.apple_pos = pygame.math.Vector2(self.appleX, self.appleY)
 
+    # Method to draw the apple    
     def drawing_the_apple(self):
         
         apple = pygame.Rect(int(self.appleX * grid_block), int(self.appleY * grid_block), grid_block, grid_block)
         pygame.draw.rect(screen, (255, 0, 0), apple)
     
+    # Method to spaw the apple on the board
     def spawing_new_apple(self):
         
         self.appleX = random.randint(0, grid_block2 - 1)
