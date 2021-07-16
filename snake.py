@@ -6,9 +6,8 @@ import random
 class Apple:
     
     def __init__(self):
-        
-        self.appleX = random.randint(0, grid_block2 - 1) # X_coor
-        self.appleY = random.randint(0, grid_block2 - 1) # Y_coor
+        self.appleX = random.randint(0, grid_block2 - 1) # X_coord.
+        self.appleY = random.randint(0, grid_block2 - 1) # Y_coord.
         self.apple_pos = pygame.math.Vector2(self.appleX, self.appleY)
 
     # Method to draw the apple    
@@ -20,14 +19,13 @@ class Apple:
     # Method to spaw the apple on the board
     def spawing_new_apple(self):
         
-        self.appleX = random.randint(0, grid_block2 - 1)
-        self.appleY = random.randint(0, grid_block2 - 1)
+        self.appleX = random.randint(0, grid_block2 - 1) # random x coord.
+        self.appleY = random.randint(0, grid_block2 - 1) # random y coord.
         self.apple_pos = pygame.math.Vector2(self.appleX, self.appleY)
         
 class Snake:
     
     def __init__(self):
-        
         self.snake = [pygame.math.Vector2(7, 12), pygame.math.Vector2(8, 12), pygame.math.Vector2(9, 12)]
         self.movement = pygame.math.Vector2(-1, 0)
         self.new_snake_body = False
@@ -36,13 +34,11 @@ class Snake:
         
         
     def drawing_the_snake(self):
-        
         for pixel in self.snake:
             pixel_draw = pygame.Rect(pixel.x * grid_block, pixel.y * grid_block, grid_block, grid_block)
             pygame.draw.rect(screen, (0, 255, 0), pixel_draw)     
                                  
-    def moving_the_snake(self):
-        
+    def moving_the_snake(self):        
         if self.new_snake_body == True:
             snake_move = self.snake[:]
             snake_move.insert(0, snake_move[0] + self.movement)
@@ -53,16 +49,13 @@ class Snake:
             snake_move.insert(0, snake_move[0] + self.movement)
             self.snake = snake_move[:]
          
-    def play_bite(self):
-        
+    def play_bite(self):       
         self.bite.play()
     
-    def add_new_body(self):
-        
+    def add_new_body(self):        
         self.new_snake_body = True
     
-class Game:
-    
+class Game:    
     def __init__(self):
         
         self.spaw_snake = Snake()
