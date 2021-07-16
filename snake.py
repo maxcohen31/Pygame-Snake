@@ -98,7 +98,8 @@ class Game:
         for pixel in self.spaw_snake.snake[1:]:
             if pixel == self.spaw_snake.snake[0]:
                 pygame.quit()
-               
+    
+    # Method to show the score
     def score(self):
         textX = 550
         textY = 550
@@ -108,13 +109,13 @@ class Game:
         screen.blit(show_score, rectangle_of_score)
             
 pygame.init()
-pygame.display.set_caption('Snake')
-icon = pygame.image.load('snake.png')
-get_icon = pygame.display.set_icon(icon)
-grid_block = 30
-grid_block2 = 20
-font = pygame.font.Font('freesansbold.ttf', 20)
-screen = pygame.display.set_mode((grid_block * grid_block2, grid_block * grid_block2))
+pygame.display.set_caption('Snake') # Title
+icon = pygame.image.load('snake.png') # Icon 
+get_icon = pygame.display.set_icon(icon) # Show icon
+grid_block = 30 # Block 1
+grid_block2 = 20 # Block 2
+font = pygame.font.Font('freesansbold.ttf', 20) # Font
+screen = pygame.display.set_mode((grid_block * grid_block2, grid_block * grid_block2)) # Grid
 g = Game()
 
 SCREEN_MOVEMENT = pygame.USEREVENT
