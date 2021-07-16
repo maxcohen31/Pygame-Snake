@@ -26,22 +26,22 @@ class Apple:
 class Snake:
     
     def __init__(self):
-        self.snake = [pygame.math.Vector2(7, 12), pygame.math.Vector2(8, 12), pygame.math.Vector2(9, 12)]
-        self.movement = pygame.math.Vector2(-1, 0)
-        self.new_snake_body = False
+        self.snake = [pygame.math.Vector2(7, 12), pygame.math.Vector2(8, 12), pygame.math.Vector2(9, 12)] # Blocks of the snake
+        self.movement = pygame.math.Vector2(-1, 0) # Right movement
+        self.new_snake_body = False # Variable to add blocks to the snake
         self.bite = pygame.mixer.Sound('Bite.wav')
         
         
         
     def drawing_the_snake(self):
-        for pixel in self.snake:
-            pixel_draw = pygame.Rect(pixel.x * grid_block, pixel.y * grid_block, grid_block, grid_block)
-            pygame.draw.rect(screen, (0, 255, 0), pixel_draw)     
+        for pixel in self.snake: # Looping through the blocks of the snake
+            pixel_draw = pygame.Rect(pixel.x * grid_block, pixel.y * grid_block, grid_block, grid_block) # making the blocks (x, y, height, width)
+            pygame.draw.rect(screen, (0, 255, 0), pixel_draw) # Drawing the blocks
                                  
     def moving_the_snake(self):        
         if self.new_snake_body == True:
-            snake_move = self.snake[:]
-            snake_move.insert(0, snake_move[0] + self.movement)
+            snake_move = self.snake[:] # All snake body
+            snake_move.insert(0, snake_move[0] + self.movement) # 
             self.snake = snake_move[:]
             self.new_snake_body = False
         else:
@@ -65,26 +65,22 @@ class Game:
         
         
     def snake_and_apple(self):
-        
         self.spaw_apple.drawing_the_apple()
         self.spaw_snake.drawing_the_snake()
         self.score()
   
     def move(self):
-        
         self.spaw_snake.moving_the_snake()
         self.eating_the_apple()
         self.boundaries()
          
-    def eating_the_apple(self):
-        
+    def eating_the_apple(self):    
         if self.spaw_snake.snake[0] == self.spaw_apple.apple_pos:
             self.spaw_apple.spawing_new_apple()
             self.spaw_snake.add_new_body()
             self.spaw_snake.play_bite()
             
     def boundaries(self):
- 
         if self.spaw_snake.snake[0].x < 0:
             pygame.quit()
         elif self.spaw_snake.snake[0].x > grid_block2:
@@ -99,7 +95,6 @@ class Game:
                 pygame.quit()
                
     def score(self):
-        
         textX = 550
         textY = 550
         score = str(len(self.spaw_snake.snake) - 3)
