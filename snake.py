@@ -65,8 +65,8 @@ class Game:
         
         
     def snake_and_apple(self):
-        self.spaw_apple.drawing_the_apple()
-        self.spaw_snake.drawing_the_snake()
+        self.spaw_apple.drawing_the_apple() # Spawn apple
+        self.spaw_snake.drawing_the_snake() # Spawn snake
         self.score()
   
     def move(self):
@@ -74,12 +74,14 @@ class Game:
         self.eating_the_apple()
         self.boundaries()
          
-    def eating_the_apple(self):    
-        if self.spaw_snake.snake[0] == self.spaw_apple.apple_pos:
-            self.spaw_apple.spawing_new_apple()
-            self.spaw_snake.add_new_body()
-            self.spaw_snake.play_bite()
-            
+    # Method that allows the snake to eat the apple        
+    def eating_the_apple(self):  
+        if self.spaw_snake.snake[0] == self.spaw_apple.apple_pos: # check if the head of the snake(first block) has the same position of the apple
+            self.spaw_apple.spawing_new_apple() # A new apple wil be spawned
+            self.spaw_snake.add_new_body() # A new block to add to the snake body
+            self.spaw_snake.play_bite() # Sound
+     
+    # Method that bound the snake into the grid 
     def boundaries(self):
         if self.spaw_snake.snake[0].x < 0:
             pygame.quit()
