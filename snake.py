@@ -37,23 +37,26 @@ class Snake:
         for pixel in self.snake: # Looping through the blocks of the snake
             pixel_draw = pygame.Rect(pixel.x * grid_block, pixel.y * grid_block, grid_block, grid_block) # making the blocks (x, y, height, width)
             pygame.draw.rect(screen, (0, 255, 0), pixel_draw) # Drawing the blocks
-                                 
+    
+    # Method to move the snake
     def moving_the_snake(self):        
         if self.new_snake_body == True:
-            snake_move = self.snake[:] # All snake body
+            snake_move = self.snake[:] # Select all the snake body
             snake_move.insert(0, snake_move[0] + self.movement) # 
             self.snake = snake_move[:]
-            self.new_snake_body = False
+            self.new_snake_body = False # Turn the variable new_snake_body to False
         else:
-            snake_move = self.snake[:-1]
-            snake_move.insert(0, snake_move[0] + self.movement)
+            snake_move = self.snake[:-1] # Select the first two elements of the snake body
+            snake_move.insert(0, snake_move[0] + self.movement) # Insert at the start of the list the snake_move value
             self.snake = snake_move[:]
-         
+    
+    # Method to play the bite
     def play_bite(self):       
         self.bite.play()
-    
+        
+    # Method to add the block to the snake
     def add_new_body(self):        
-        self.new_snake_body = True
+        self.new_snake_body = True # If True a new block will be add to the snake body
     
 class Game:    
     def __init__(self):
